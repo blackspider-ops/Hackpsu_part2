@@ -20,15 +20,15 @@ def register():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        
+
         # Check if username exists
         if username in users:
             return render_template('register.html', message="Username already exists.")
-        
+
         # Register new user
         users[username] = password
         return redirect(url_for('login'))
-    
+
     return render_template('register.html')
 
 # Login route
@@ -37,14 +37,14 @@ def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        
+
         # Check if username and password match
         if username in users and users[username] == password:
             session['username'] = username
             return redirect(url_for('dashboard'))
         else:
             return "Invalid username or password."
-    
+
     return render_template('login.html')
 
 # Logout route
@@ -65,7 +65,7 @@ def dashboard():
 def offer_ride():
     if 'username' not in session:
         return redirect(url_for('login'))
-    
+
     if request.method == 'POST':
         # Get data from the form
         origin = request.form['origin']
@@ -74,9 +74,9 @@ def offer_ride():
         departure_time = request.form['departure_time']
         seats = int(request.form['seats'])
         price = float(request.form['price'])
-        
+
         departure_datetime_str = f"{departure_date} {departure_time}"
-        
+
         # Validate and convert date and time
         try:
             departure_datetime = datetime.strptime(departure_datetime_str, '%Y-%m-%d %H:%M')
@@ -93,7 +93,7 @@ def offer_ride():
             return redirect(url_for('rides_list'))  # Redirect to the rides list
         except ValueError:
             return "Invalid date or time format."
-    
+
     return render_template('offer_ride.html')
 
 # Find Ride route
@@ -103,10 +103,10 @@ def find_ride():
         origin = request.form['origin']
         destination = request.form['destination']
         search_date_str = request.form['search_date']
-        
+
         try:
             search_date = datetime.strptime(search_date_str, '%Y-%m-%d').date()
-            
+
             # Filter rides based on the search criteria
             found_rides = [
                 ride for ride in rides
@@ -118,7 +118,7 @@ def find_ride():
             return render_template('rides_list.html', rides=found_rides)  # Show found rides
         except ValueError:
             return "Invalid date format."
-    
+
     return render_template('find_ride.html')
 
 # List Rides route
