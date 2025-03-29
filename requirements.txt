@@ -6,3 +6,4 @@ Flask-Bootstrap
 python-dotenv>=0.20
 Werkzeug>=2.0 # For password hashing
 flask-sqlalchemy
+Flask-SQLAlchemy
