@@ -12,6 +12,8 @@ CORS(app, supports_credentials=True)
 
 app.secret_key = 'your_secret_key'  # Change this to a strong, random key in a real application
 
+app.config['SERVER_NAME'] = None
+
 # Dummy data (replace with a database in a real application)
 users = {}
 rides = []

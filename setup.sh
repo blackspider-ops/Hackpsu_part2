@@ -1,13 +1,5 @@
 #!/bin/bash
 
-# Make scripts executable
-chmod +x copy_frontend.sh
-chmod +x copy_templates.sh
-
-# Run the copy scripts
-./copy_frontend.sh
-./copy_templates.sh
-
 # Create a .gitignore file
 cat > .gitignore << 'EOL'
 # Python
