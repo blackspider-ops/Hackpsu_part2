@@ -1,8 +1,0 @@
-Flask>=2.0
-Flask-SQLAlchemy>=2.5
-Flask-WTF>=1.0
-Flask-Login>=0.6
-Flask-Bootstrap
-python-dotenv>=0.20
-Werkzeug>=2.0 # For password hashing
-flask-sqlalchemy

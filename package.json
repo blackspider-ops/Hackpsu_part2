@@ -1,0 +1,17 @@
+{
+  "name": "hackpsu-ride-sharing-app",
+  "version": "1.0.0",
+  "description": "A ride sharing application for HackPSU",
+  "scripts": {
+    "setup": "bash setup.sh",
+    "install:all": "npm install && cd frontend && npm install && cd ../backend && pip install -r requirements.txt",
+    "start:backend": "cd backend && python app.py",
+    "start:frontend": "cd frontend && npm run dev",
+    "dev": "cd frontend && npm run dev",
+    "build": "cd frontend && npm run build"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {}
+}
