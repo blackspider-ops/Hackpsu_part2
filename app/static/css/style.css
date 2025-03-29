@@ -1,0 +1,10 @@
+/* Add some basic custom styles */
+body {
+    padding-top: 5rem; /* Adjust if using fixed navbar */
+}
+
+.flash-messages .alert {
+    margin-top: 1rem;
+}
+
+/* Add more styles as needed */
