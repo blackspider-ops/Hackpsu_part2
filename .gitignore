@@ -1,3 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# Instance folder (contains secrets, DB)
+/instance/
+
+# IDE / Editor specific
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+*.env
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
