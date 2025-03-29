@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Available Rides</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Available Rides</h1>
+    {% if rides %}
+        <ul>
+            {% for ride in rides %}
+                <li>
+                    <strong>Origin:</strong> {{ ride.origin }}<br>
+                    <strong>Destination:</strong> {{ ride.destination }}<br>
+                    <strong>Departure:</strong> {{ ride.departure_datetime.strftime('%Y-%m-%d %H:%M') }}<br>
+                    <strong>Available Seats:</strong> {{ ride.available_seats }} / {{ ride.seats }}<br>
+                    <strong>Price:</strong> ${{ ride.price }}<br>
+                    <a href="{{ url_for('ride_details', ride_id=loop.index0) }}">Details</a>
+                </li>
+                <hr>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No rides available.</p>
+    {% endif %}
+    {% if session['username'] %}
+        <p><a href="{{ url_for('offer_ride') }}">Offer a Ride</a></p>
+        <p><a href="{{ url_for('dashboard') }}">Back to Dashboard</a></p>
+    {% else %}
+        <p><a href="{{ url_for('index') }}">Back to Home</a></p>
+    {% endif %}
+</body>
+</html>
