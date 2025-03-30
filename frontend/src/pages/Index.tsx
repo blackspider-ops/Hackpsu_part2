@@ -1,16 +1,10 @@
 
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import Home from "./Home";
 
 const Index = () => {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    // Redirect to login page
-    navigate("/login", { replace: true });
-  }, [navigate]);
-
-  return null;
+  // Instead of redirecting, directly render the Home component
+  return <Home />;
 };
 
 export default Index;
