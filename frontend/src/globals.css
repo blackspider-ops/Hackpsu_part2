@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --first-color: #c77dff;
+    --title-color: hsl(45, 4%, 15%);
+    --text-color: hsl(45, 4%, 35%);
+    --body-color: hsl(0, 0%, 100%);
+    --container-color: #FFF;
+  }
+
+  .dark {
+    --first-color: #c77dff;
+    --title-color: hsl(45, 4%, 95%);
+    --text-color: hsl(45, 4%, 80%);
+    --body-color: hsl(45, 8%, 13%);
+    --container-color: hsl(45, 8%, 16%);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .show-menu {
+    @apply top-[calc(theme(spacing.12)_+_theme(spacing.4))];
+  }
+
+  .active-link::before {
+    @apply content-[''] absolute bottom-[-.75rem] left-1/2 w-1.5 h-1.5 bg-title-color rounded-full;
+  }
+
+  .scroll-header {
+    @apply shadow-[0_1px_4px_rgba(0,0,0,0.1)];
+  }
+
+  .show-scroll {
+    @apply bottom-12;
+  }
+}
+
+@layer components {
+  .nav__link {
+    @apply text-title-color font-semibold hover:text-first-color transition-colors;
+  }
+
+  .button {
+    @apply inline-block bg-first-color text-gray-900 px-6 py-3 rounded-full font-semibold transition-colors hover:bg-first-color/90;
+  }
+
+  .section {
+    @apply py-16 md:py-24;
+  }
+
+  .services__data {
+    @apply grid gap-4 bg-container-color shadow-[0_5px_40px_rgba(0,0,0,0.07)] border-b-4 border-transparent p-8 rounded-lg text-center transition-all hover:scale-105 hover:border-first-color;
+  }
+}
