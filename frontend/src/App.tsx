@@ -8,6 +8,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import Index from "./pages/Index";
 import Home from "./pages/Home";
+import Root from "./pages/Root";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import SelectInstitute from "./pages/SelectInstitute";
@@ -17,7 +18,13 @@ import ListRide from "./pages/ListRide";
 import NotFound from "./pages/NotFound";
 import Preloader from "./components/Preloader";
 import { RideProvider } from "./context/RideContext";
-import { AuthProvider } from "./context/AuthContext";
+import { AuthProvider, useAuth } from "./context/AuthContext";
+
+// Component to handle root path redirection based on auth status
+const RootRedirect = () => {
+  const { isAuthenticated } = useAuth();
+  return isAuthenticated ? <Navigate to="/dashboard" replace /> : <Home />;
+};
 
 const queryClient = new QueryClient();
 
@@ -40,7 +47,8 @@ const App = () => {
             <BrowserRouter>
               <AuthProvider>
                 <Routes>
-                  <Route path="/" element={<Home />} />
+                  <Route path="/home" element={<Home />} />
+<Route path="/" element={<Root />} />
                   <Route path="/index" element={<Home />} />
                   <Route path="/login" element={<Login />} />
                   <Route path="/signup" element={<Signup />} />

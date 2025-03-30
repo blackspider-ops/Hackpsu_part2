@@ -52,6 +52,8 @@ rides = []
 # API routes
 @app.route('/api/rides', methods=['GET'])
 def get_rides():
+    if 'username' not in session:
+        return {'error': 'Not logged in'}, 401
     available_rides = [ride for ride in rides if ride['available_seats'] > 0]
     return {'rides': available_rides}
 
@@ -86,6 +88,8 @@ def create_ride():
 
 @app.route('/api/rides/search', methods=['POST'])
 def search_rides():
+    if 'username' not in session:
+        return {'error': 'Not logged in'}, 401
     data = request.json
     origin = data.get('origin')
     destination = data.get('destination')
@@ -223,9 +227,9 @@ def legacy_logout():
 
 @app.route('/legacy/dashboard')
 def legacy_dashboard():
-    if 'username' in session:
-        return render_template('dashboard.html', username=session['username'])
-    return redirect(url_for('legacy_login'))
+    if 'username' not in session:
+        return redirect(url_for('legacy_login'))
+    return render_template('dashboard.html', username=session['username'])
 
 @app.route('/legacy/offer_ride', methods=['GET', 'POST'])
 def legacy_offer_ride():
@@ -257,6 +261,8 @@ def legacy_offer_ride():
 
 @app.route('/legacy/find_ride', methods=['GET', 'POST'])
 def legacy_find_ride():
+    if 'username' not in session:
+        return redirect(url_for('legacy_login'))
     if request.method == 'POST':
         origin = request.form['origin']
         destination = request.form['destination']
@@ -277,11 +283,15 @@ def legacy_find_ride():
 
 @app.route('/legacy/rides')
 def legacy_rides_list():
+    if 'username' not in session:
+        return redirect(url_for('legacy_login'))
     available_rides = [ride for ride in rides if ride['available_seats'] > 0]
     return render_template('rides_list.html', rides=available_rides)
 
 @app.route('/legacy/ride/<int:ride_id>')
 def legacy_ride_details(ride_id):
+    if 'username' not in session:
+        return redirect(url_for('legacy_login'))
     if 0 <= ride_id < len(rides):
         return render_template('ride_details.html', ride=rides[ride_id], ride_id=ride_id)
     return "Ride not found."
