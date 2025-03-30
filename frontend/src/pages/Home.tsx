@@ -20,7 +20,7 @@ const Home = () => {
       {/* Left panel - image/welcome */}
       <div className="w-full md:w-1/2 bg-gradient-to-br from-tuktuk to-tuktuk-light p-8 text-white flex-col justify-between">
         <div className="mb-auto">
-          <Logo size="lg" withText animated />
+          <Logo size="lg" withText animated white />
         </div>
         <div className="space-y-6">
           <img src="/Home_icon.svg" alt="TUK TUK Vector Graphic" className="w-full max-w-xl h-auto mb-6" />
@@ -39,7 +39,7 @@ const Home = () => {
         <div className="w-full max-w-md space-y-8">
           <div className="text-center">
             <div className="flex justify-center mb-6 md:hidden">
-              <Logo size="lg" withText animated />
+              <Logo size="lg" withText animated white />
             </div>
             <h2 className="text-3xl font-bold tracking-tight text-gray-900">Ready to ride?</h2>
             <p className="mt-2 text-gray-600">

@@ -9,7 +9,7 @@ const Root = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-tuktuk to-tuktuk-light">
       <nav className="p-6 flex justify-between items-center">
-        <Logo size="lg" withText animated />
+        <Logo size="lg" withText animated white />
         <div className="space-x-4">
           <Button 
             className="bg-white text-tuktuk hover:bg-gray-100 px-8 py-6 text-lg"

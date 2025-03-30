@@ -57,7 +57,7 @@ const Signup = () => {
       {/* Left panel - image/welcome */}
       <div className="w-full md:w-1/2 bg-gradient-to-br from-tuktuk to-tuktuk-light p-8 text-white flex-col justify-between">
         <div className="mb-auto">
-          <Logo size="lg" withText />
+          <Logo size="lg" withText white/>
         </div>
         <div className="space-y-6">
           <img src="/Home_icon.svg" alt="TUK TUK Vector Graphic" className="w-full max-w-xl h-auto mb-6" />
@@ -75,7 +75,7 @@ const Signup = () => {
       <div className="w-full md:w-1/2 flex items-center justify-center p-8">
         <div className="w-full max-w-md">
           <div className="mb-8 md:hidden">
-            <Logo size="lg" withText />
+            <Logo size="lg" withText white />
           </div>
           <SignupForm onSignup={handleSignup} />
         </div>
@@ -85,3 +85,4 @@ const Signup = () => {
 };
 
 export default Signup;
+  
