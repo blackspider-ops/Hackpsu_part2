@@ -25,11 +25,12 @@ const Signup = () => {
   return (
     <div className="min-h-screen flex flex-col md:flex-row">
       {/* Left panel - image/welcome */}
-      <div className="hidden md:flex md:w-1/2 bg-gradient-to-br from-tuktuk to-tuktuk-light p-8 text-white flex-col justify-between">
+      <div className="w-full md:w-1/2 bg-gradient-to-br from-tuktuk to-tuktuk-light p-8 text-white flex-col justify-between">
         <div className="mb-auto">
           <Logo size="lg" withText />
         </div>
         <div className="space-y-6">
+          <img src="/Home_icon.svg" alt="TUK TUK Vector Graphic" className="w-full max-w-xl h-auto mb-6" />
           <h1 className="text-4xl font-bold">Join Our Community</h1>
           <p className="text-xl">Connect with fellow students and share rides around campus and beyond.</p>
           <div className="h-1 w-20 bg-white rounded-full opacity-50"></div>

@@ -1,6 +1,8 @@
 body {
     font-family: sans-serif;
     margin: 20px;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 h1, h2 {
@@ -17,7 +19,8 @@ input[type="password"],
 input[type="date"],
 input[type="time"],
 input[type="number"] {
-    width: 300px;
+    width: 100%;
+    max-width: 300px;
     padding: 8px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
@@ -32,6 +35,8 @@ input[type="submit"] {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    width: 100%;
+    max-width: 300px;
 }
 
 input[type="submit"]:hover {
@@ -41,6 +46,7 @@ input[type="submit"]:hover {
 ul {
     list-style-type: none;
     padding: 0;
+    width: 100%;
 }
 
 li {
@@ -49,13 +55,49 @@ li {
     border: 1px solid #eee;
     border-radius: 4px;
     background-color: #f9f9f9;
+    word-wrap: break-word;
 }
 
 a {
     color: #007bff;
     text-decoration: none;
+    display: inline-block;
+    margin-bottom: 5px;
 }
 
 a:hover {
     text-decoration: underline;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    body {
+        margin: 10px;
+    }
+    
+    h1 {
+        font-size: 1.8em;
+    }
+    
+    h2 {
+        font-size: 1.5em;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        margin: 5px;
+    }
+    
+    h1 {
+        font-size: 1.5em;
+    }
+    
+    h2 {
+        font-size: 1.2em;
+    }
+    
+    li {
+        padding: 8px;
+    }
 }

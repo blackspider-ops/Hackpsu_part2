@@ -65,6 +65,7 @@ const LoginForm = ({ onLogin }: LoginFormProps) => {
               placeholder="••••••••"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              autoComplete="current-password"
             />
           </div>
           <Button type="submit" className="w-full btn-tuktuk">

@@ -9,7 +9,7 @@ const Home = () => {
   return (
     <div className="min-h-screen flex flex-col md:flex-row">
       {/* Left panel - image/welcome */}
-      <div className="hidden md:flex md:w-1/2 bg-gradient-to-br from-tuktuk to-tuktuk-light p-8 text-white flex-col justify-between">
+      <div className="w-full md:w-1/2 bg-gradient-to-br from-tuktuk to-tuktuk-light p-8 text-white flex-col justify-between">
         <div className="mb-auto">
           <Logo size="lg" withText animated />
         </div>
