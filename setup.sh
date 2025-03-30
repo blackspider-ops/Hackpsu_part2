@@ -28,18 +28,5 @@ frontend/dist/
 Thumbs.db
 EOL
 
-echo "Project setup complete!"
-echo "To start the backend:"
-echo "  cd backend"
-echo "  pip install -r requirements.txt"
-echo "  python app.py"
-echo ""
-echo "To start the frontend (development mode):"
-echo "  cd frontend"
-echo "  npm install"
-echo "  npm run dev"
-echo ""
-echo "To build the frontend for production:"
-echo "  cd frontend"
-echo "  npm install"
-echo "  npm run build"
+cd frontend && npm install && npm run build 
+cd ../backend && pip3 install -r requirements.txt && python3 app.py 

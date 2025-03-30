@@ -6,6 +6,7 @@ import Logo from './Logo';
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { useAuth } from "@/context/AuthContext";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -21,12 +22,13 @@ const navItems = [
 
 const Navbar = () => {
   const location = useLocation();
+  const { isAuthenticated, logout } = useAuth();
 
   return (
     <nav className="bg-white shadow-sm border-b py-2">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between h-16">
-          <Link to="/" className="flex items-center">
+          <Link to={isAuthenticated ? "/dashboard" : "/"} className="flex items-center">
             <Logo />
           </Link>
 
@@ -94,7 +96,7 @@ const Navbar = () => {
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
-                  <Link to="/login" className="w-full">Logout</Link>
+                  <button onClick={logout} className="w-full text-left">Logout</button>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>

@@ -5,6 +5,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
 import Index from "./pages/Index";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -16,6 +17,7 @@ import ListRide from "./pages/ListRide";
 import NotFound from "./pages/NotFound";
 import Preloader from "./components/Preloader";
 import { RideProvider } from "./context/RideContext";
+import { AuthProvider } from "./context/AuthContext";
 
 const queryClient = new QueryClient();
 
@@ -36,17 +38,19 @@ const App = () => {
             <Preloader onFinish={handlePreloaderFinish} />
           ) : (
             <BrowserRouter>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/index" element={<Home />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/signup" element={<Signup />} />
-                <Route path="/select-institute" element={<SelectInstitute />} />
-                <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/find-ride" element={<FindRide />} />
-                <Route path="/list-ride" element={<ListRide />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
+              <AuthProvider>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/index" element={<Home />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/signup" element={<Signup />} />
+                  <Route path="/select-institute" element={<SelectInstitute />} />
+                  <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+                  <Route path="/find-ride" element={<ProtectedRoute><FindRide /></ProtectedRoute>} />
+                  <Route path="/list-ride" element={<ProtectedRoute><ListRide /></ProtectedRoute>} />
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </AuthProvider>
             </BrowserRouter>
           )}
         </RideProvider>

@@ -9,17 +9,47 @@ const Signup = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
 
-  const handleSignup = (name: string, email: string, password: string) => {
-    // In a real app, you would create the user account here
-    toast({
-      title: "Account created!",
-      description: "Redirecting you to the institute selection page...",
-    });
-    
-    // Simulate signup success and redirect
-    setTimeout(() => {
-      navigate('/select-institute');
-    }, 1500);
+  const handleSignup = async (name: string, email: string, password: string) => {
+    try {
+      const response = await fetch('http://localhost:5000/api/auth/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: name,
+          email: email,
+          password: password
+        }),
+      });
+      
+      const data = await response.json();
+      
+      if (data.success) {
+        toast({
+          title: "Account created!",
+          description: "Redirecting you to the institute selection page...",
+        });
+        
+        // Redirect after successful signup
+        setTimeout(() => {
+          navigate('/select-institute');
+        }, 1500);
+      } else {
+        toast({
+          title: "Signup failed",
+          description: data.error || "An error occurred during signup",
+          variant: "destructive"
+        });
+      }
+    } catch (error) {
+      console.error('Signup error:', error);
+      toast({
+        title: "Signup failed",
+        description: "An error occurred during signup",
+        variant: "destructive"
+      });
+    }
   };
 
   return (

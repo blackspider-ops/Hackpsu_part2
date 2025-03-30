@@ -1,25 +1,40 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import LoginForm from '../components/auth/LoginForm';
 import Logo from '../components/Logo';
 import { useToast } from '@/hooks/use-toast';
+import { useAuth } from '@/context/AuthContext';
 
 const Login = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
+  const { login, isAuthenticated } = useAuth();
+  
+  // Redirect to dashboard if already logged in
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/dashboard');
+    }
+  }, [isAuthenticated, navigate]);
 
-  const handleLogin = (email: string, password: string) => {
-    // In a real app, you would perform actual authentication here
-    toast({
-      title: "Login successful!",
-      description: "Redirecting you to the institute selection page...",
-    });
+  const handleLogin = async (email: string, password: string) => {
+    const success = await login(email, password);
     
-    // Simulate login success and redirect
-    setTimeout(() => {
-      navigate('/select-institute');
-    }, 1500);
+    if (success) {
+      // Show success toast notification
+      toast({
+        title: "Login successful!",
+        description: "Redirecting you to the dashboard...",
+      });
+    } else {
+      // Show error toast notification
+      toast({
+        title: "Login failed",
+        description: "Invalid email or password",
+        variant: "destructive"
+      });
+    }
   };
 
   return (
